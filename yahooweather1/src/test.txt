@@ -1,0 +1,108 @@
+location:
+city:"Mumbai"
+woeid:2295411
+country:"India"
+lat:19.090281
+long:72.871368
+timezone_id:"Asia/Kolkata"
+current_observation:
+pubDate:1718190217
+wind:
+chill:100
+direction:"SW"
+speed:13
+atmosphere:
+humidity:74
+visibility:7.02
+pressure:1006.1
+astronomy:
+sunrise:"6:00 AM"
+sunset:"7:17 PM"
+condition:
+forecasts:0:
+day:"Wed"
+date:1718208000
+high:90
+low:82
+text:"Cloudy"
+code:26
+1:
+day:"Thu"
+date:1718294400
+high:91
+low:81
+text:"Showers"
+code:11
+2:
+day:"Fri"
+date:1718380800
+high:91
+low:81
+text:"Thunderstorms"
+code:4
+3:
+day:"Sat"
+date:1718467200
+high:90
+low:82
+text:"Mostly Cloudy"
+code:28
+4:
+day:"Sun"
+date:1718553600
+high:91
+low:82
+text:"Thunderstorms"
+code:4
+5:
+day:"Mon"
+date:1718640000
+high:91
+low:81
+text:"Thunderstorms"
+code:4
+6:
+day:"Tue"
+date:1718726400
+high:92
+low:81
+text:"Thunderstorms"
+code:4
+7:
+day:"Wed"
+date:1718812800
+high:91
+low:83
+text:"Thunderstorms"
+code:4
+8:
+day:"Thu"
+date:1718899200
+high:90
+low:79
+text:"Showers"
+code:11
+9:
+day:"Fri"
+date:1718985600
+high:91
+low:80
+text:"Thunderstorms"
+code:4
+10:
+day:"Sat"
+date:1719072000
+high:90
+low:79
+text:"Thunderstorms"
+code:4
+
+
+                    <div id="latlongwoeid">
+                        <div id="latlonglogo"><i class="fa-solid fa-globe"></i></div>
+                        <div id="latlongtext">
+                            <p>Latitude: 19.090281</p>
+                            <p>Longitude: 72.871368</p>
+                            <p>WOEID(Where On Earth IDentifier): 2295411</p>
+                        </div>
+                    </div>
