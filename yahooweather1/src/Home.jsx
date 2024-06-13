@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import WeatherYahoo from './WeatherYahoo';
+import '../src/Home.css'
 
 function Home(){
     const router = useNavigate();
@@ -13,20 +15,21 @@ function Home(){
     function handleSubmit(){
         setAllWeather([...allweather,weather])
         setWeather("");
-        router("/weatheryahoo");
+        router("/weatheryahoo",{state:{weather : weather}});
     }
     
     return(
         <div id="home">
-            <h1>Enter City Name</h1>
-            <input type='text' name='weatherinput' onChange={handleChange}/><br/>
-            <button onClick={handleSubmit}>Submit</button><br/>
+            <h1>Enter City Name</h1><br/>
+            <input type='text' name='weatherinput' onChange={handleChange}/><br/><br/>
+            <button onClick={handleSubmit}>Search</button><br/>
             
             {allweather.map((weather)=>(
                 <div>
                     <span>{""}{weather}</span>
                 </div>
             ))}
+            
         </div>
     )
 }

@@ -1,38 +1,52 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import '../src/WeatherYahoo.css'
+import moment from "moment";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
+import Home from "./Home";
 
-function WeatherYahoo(){
+
+
+function WeatherYahoo(props){
     const[weatheryah,setWeatheryah]=useState([]);
+    const [loading, setLoading] = useState(false);
+    const location=useLocation();
+    const city1=location.state.weather;
+    const router = useNavigate();
+   
+
+    // const{city}=useParams();
     // console.log(setWeatheryah);
 
-
     // async function GetWeather(){
+
     //     // const axios = require('axios');
 
     //     const options = {
     //     method: 'GET',
     //     url: 'https://yahoo-weather5.p.rapidapi.com/weather',
     //     params: {
-    //         location: 'mumbai',
+    //         location: `${city1}`,
     //         format: 'json',
     //         u: 'f'
     //     },
     //     headers: {
-    //         'x-rapidapi-key': '6a03709e8dmshfa2dde83b1ad88cp15b660jsna73bbba2935a',
+    //         'x-rapidapi-key': '2d90b73b65msh5af945ed2540dd1p17ca2cjsnce2a3c1b00e3',
     //         'x-rapidapi-host': 'yahoo-weather5.p.rapidapi.com'
     //     }
     //     };
-
+            // setLoading(true);
     //     try {
     //         const response = await axios.request(options);
+                // setLoading(false);
     //         // console.log(response.data);
     //         setWeatheryah([response.data]);
+                
     //     } catch (error) {
     //         console.error(error);
     //     }
     // }
-
+    
     // useEffect(()=>{
     //     GetWeather()},[]);
 
@@ -43,17 +57,24 @@ function WeatherYahoo(){
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
             </head>
-
-            <div>
+           
+            {loading?(
+                <div id="load">
+                    <h1>Loading....</h1>
+                </div>
+            ):(<div>
                 {weatheryah.map((response)=>(
                     <div>
-                        <p><b>City</b>: {response.location.city}</p>
                         <div id="parentdiv">
                             <div id="citylatlong">
                                 <div id="citycountry">
-                                    <p>{response.location.city}</p>
+                                    <div id="city">
+                                        <p>{response.location.city}</p>
+                                        <button onClick={()=>router("/")}>Change location</button><br/>
+                                    </div>
+                                    
                                     <p>{response.location.country}</p>
-                                    <p><i>6/12, 2:00pm</i> (Timezone: {response.location.timezone_id})</p>
+                                    <p><i>{new Date((response.current_observation.pubDate)*1000).toLocaleString()}</i> (Timezone: {response.location.timezone_id})</p>
                                 </div>
                             </div>
 
@@ -79,7 +100,7 @@ function WeatherYahoo(){
                                         <tbody>
                                             <tr>
                                                 <td>{response.forecasts[0].day}</td>
-                                                <td>{response.forecasts[0].date}</td>
+                                                <td>{new Date((response.forecasts[0].date)*1000).toLocaleString().split(',')[0]}</td>
                                                 <td>{response.forecasts[0].text}</td>
                                                 <td>{response.forecasts[0].high}</td>
                                                 <td>{response.forecasts[0].low}</td>
@@ -87,7 +108,7 @@ function WeatherYahoo(){
 
                                             <tr>
                                                 <td>{response.forecasts[1].day}</td>
-                                                <td>{response.forecasts[1].date}</td>
+                                                <td>{new Date((response.forecasts[1].date)*1000).toLocaleString().split(',')[0]}</td>
                                                 <td>{response.forecasts[1].text}</td>
                                                 <td>{response.forecasts[1].high}</td>
                                                 <td>{response.forecasts[1].low}</td>
@@ -95,7 +116,7 @@ function WeatherYahoo(){
 
                                             <tr>
                                                 <td>{response.forecasts[2].day}</td>
-                                                <td>{response.forecasts[2].date}</td>
+                                                <td>{new Date((response.forecasts[2].date)*1000).toLocaleString().split(',')[0]}</td>
                                                 <td>{response.forecasts[2].text}</td>
                                                 <td>{response.forecasts[2].high}</td>
                                                 <td>{response.forecasts[2].low}</td>
@@ -103,7 +124,7 @@ function WeatherYahoo(){
 
                                             <tr>
                                                 <td>{response.forecasts[3].day}</td>
-                                                <td>{response.forecasts[3].date}</td>
+                                                <td>{new Date((response.forecasts[3].date)*1000).toLocaleString().split(',')[0]}</td>
                                                 <td>{response.forecasts[3].text}</td>
                                                 <td>{response.forecasts[3].high}</td>
                                                 <td>{response.forecasts[3].low}</td>
@@ -111,7 +132,7 @@ function WeatherYahoo(){
 
                                             <tr>
                                                 <td>{response.forecasts[4].day}</td>
-                                                <td>{response.forecasts[4].date}</td>
+                                                <td>{new Date((response.forecasts[4].date)*1000).toLocaleString().split(',')[0]}</td>
                                                 <td>{response.forecasts[4].text}</td>
                                                 <td>{response.forecasts[4].high}</td>
                                                 <td>{response.forecasts[4].low}</td>
@@ -119,7 +140,7 @@ function WeatherYahoo(){
 
                                             <tr>
                                                 <td>{response.forecasts[5].day}</td>
-                                                <td>{response.forecasts[5].date}</td>
+                                                <td>{new Date((response.forecasts[5].date)*1000).toLocaleString().split(',')[0]}</td>
                                                 <td>{response.forecasts[5].text}</td>
                                                 <td>{response.forecasts[5].high}</td>
                                                 <td>{response.forecasts[5].low}</td>
@@ -127,7 +148,7 @@ function WeatherYahoo(){
 
                                             <tr>
                                                 <td>{response.forecasts[6].day}</td>
-                                                <td>{response.forecasts[6].date}</td>
+                                                <td>{new Date((response.forecasts[6].date)*1000).toLocaleString().split(',')[0]}</td>
                                                 <td>{response.forecasts[6].text}</td>
                                                 <td>{response.forecasts[6].high}</td>
                                                 <td>{response.forecasts[6].low}</td>
@@ -135,7 +156,7 @@ function WeatherYahoo(){
 
                                             <tr>
                                                 <td>{response.forecasts[7].day}</td>
-                                                <td>{response.forecasts[7].date}</td>
+                                                <td>{new Date((response.forecasts[7].date)*1000).toLocaleString().split(',')[0]}</td>
                                                 <td>{response.forecasts[7].text}</td>
                                                 <td>{response.forecasts[7].high}</td>
                                                 <td>{response.forecasts[7].low}</td>
@@ -143,7 +164,7 @@ function WeatherYahoo(){
 
                                             <tr>
                                                 <td>{response.forecasts[8].day}</td>
-                                                <td>{response.forecasts[8].date}</td>
+                                                <td>{new Date((response.forecasts[8].date)*1000).toLocaleString().split(',')[0]}</td>
                                                 <td>{response.forecasts[8].text}</td>
                                                 <td>{response.forecasts[8].high}</td>
                                                 <td>{response.forecasts[8].low}</td>
@@ -151,7 +172,7 @@ function WeatherYahoo(){
 
                                             <tr>
                                                 <td>{response.forecasts[9].day}</td>
-                                                <td>{response.forecasts[9].date}</td>
+                                                <td>{new Date((response.forecasts[9].date)*1000).toLocaleString().split(',')[0]}</td>
                                                 <td>{response.forecasts[9].text}</td>
                                                 <td>{response.forecasts[9].high}</td>
                                                 <td>{response.forecasts[9].low}</td>
@@ -159,7 +180,7 @@ function WeatherYahoo(){
 
                                             <tr>
                                                 <td>{response.forecasts[10].day}</td>
-                                                <td>{response.forecasts[10].date}</td>
+                                                <td>{new Date((response.forecasts[10].date)*1000).toLocaleString().split(',')[0]}</td>
                                                 <td>{response.forecasts[10].text}</td>
                                                 <td>{response.forecasts[10].high}</td>
                                                 <td>{response.forecasts[10].low}</td>
@@ -204,12 +225,31 @@ function WeatherYahoo(){
                                             <i class="fa-regular fa-snowflake"></i><span>Chill: {response.current_observation.wind.chill}</span>
                                         </div>
                                     </div>
+
+                                    <div id="longlatwoe">
+                                        <div id="longlatlogo">
+                                            <i class="fa-solid fa-globe"></i>
+                                        </div>
+                                        <div id="longlatwoetext">
+                                            <div id="longitude">
+                                                <p>Longitude: {response.location.long}</p>
+                                            </div>
+
+                                            <div id="latitude">
+                                                <p>Latitude: {response.location.lat}</p>
+                                            </div>
+
+                                            <div id="woeid">
+                                                <p>WOEID: {response.location.woeid}</p>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>          
                     </div>
                 ))}
-            </div>
+            </div>)}
         </div>
     );
 }
