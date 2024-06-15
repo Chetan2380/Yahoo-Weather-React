@@ -12,6 +12,15 @@
     background-position: 50% 50%;
 }
 
+#home{
+    background-image: url("https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcQSkqf6eKrniu0IHc4bSnJaVdozyHiL6USHrQrKStsyRvFkUhRR39bG63y7asLO2e7UclfvG2nTFyH-HxF6sBY01ux6CvmA_IpLYO-QXrY");
+    width: 100%;
+    height: 950px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+}
+
 #home > input{
     height: 30px;
     width: 15%;
