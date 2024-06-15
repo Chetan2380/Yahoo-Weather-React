@@ -10,6 +10,8 @@ import Home from "./Home";
 function WeatherYahoo(props){
     const[weatheryah,setWeatheryah]=useState([]);
     const [loading, setLoading] = useState(false);
+    const [city, setCity] = useState("");
+
     const location=useLocation();
     const city1=location.state.weather;
     const router = useNavigate();
@@ -46,6 +48,7 @@ function WeatherYahoo(props){
     //         console.error(error);
     //     }
     // }
+    
     
     // useEffect(()=>{
     //     GetWeather()},[]);
