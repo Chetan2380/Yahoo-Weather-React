@@ -1,12 +1,14 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import WeatherYahoo from './WeatherYahoo';
 import '../src/Home.css'
+import { CityContext } from './context/city.context';
 
 function Home(){
     const router = useNavigate();
     const[weather,setWeather]=useState("");
     const[allweather,setAllWeather]=useState([]);
+    const {state,dispatch}=useContext(CityContext);
 
     function handleChange(event){
         setWeather(event.target.value);
@@ -14,8 +16,9 @@ function Home(){
 
     function handleSubmit(){
         setAllWeather([...allweather,weather])
+        dispatch({type: "SEARCH", payload: weather})
         setWeather("");
-        router("/weatheryahoo",{state:{weather : weather}});
+        router("/weatheryahoo");
     }
     
     return(

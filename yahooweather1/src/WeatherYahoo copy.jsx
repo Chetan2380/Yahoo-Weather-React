@@ -8,12 +8,15 @@ import { CityContext } from "./context/city.context";
 
 
 
-function WeatherYahoo(props){
+function WeatherYahoocopy(props){
     const[weatheryah,setWeatheryah]=useState([]);
     const [loading, setLoading] = useState(false);
+    const location=useLocation();
+    // const city1=location.state.weather;
     const {state}=useContext(CityContext);
     const router = useNavigate();
     const city1 = state.city;
+    console.log(city1)
    
 
     // const{city}=useParams();
@@ -255,4 +258,4 @@ function WeatherYahoo(props){
     );
 }
 
-export default WeatherYahoo;
+export default WeatherYahoocopy;
