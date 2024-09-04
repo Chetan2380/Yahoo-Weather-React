@@ -16,40 +16,40 @@ function WeatherYahoo(props){
     const city1 = state.city;
    
 
-    // const{city}=useParams();
-    // console.log(setWeatheryah);
+    const{city}=useParams();
+    console.log(setWeatheryah);
 
-    // async function GetWeather(){
+    async function GetWeather(){
 
-    //     // const axios = require('axios');
+        // const axios = require('axios');
 
-    //     const options = {
-    //     method: 'GET',
-    //     url: 'https://yahoo-weather5.p.rapidapi.com/weather',
-    //     params: {
-    //         location: `${city1}`,
-    //         format: 'json',
-    //         u: 'f'
-    //     },
-    //     headers: {
-    //         'x-rapidapi-key': '2d90b73b65msh5af945ed2540dd1p17ca2cjsnce2a3c1b00e3',
-    //         'x-rapidapi-host': 'yahoo-weather5.p.rapidapi.com'
-    //     }
-    //     };
-            // setLoading(true);
-    //     try {
-    //         const response = await axios.request(options);
-                // setLoading(false);
-    //         // console.log(response.data);
-    //         setWeatheryah([response.data]);
+        const options = {
+        method: 'GET',
+        url: 'https://yahoo-weather5.p.rapidapi.com/weather',
+        params: {
+            location: `${city1}`,
+            format: 'json',
+            u: 'f'
+        },
+        headers: {
+            'x-rapidapi-key': '2d90b73b65msh5af945ed2540dd1p17ca2cjsnce2a3c1b00e3',
+            'x-rapidapi-host': 'yahoo-weather5.p.rapidapi.com'
+        }
+        };
+            setLoading(true);
+        try {
+            const response = await axios.request(options);
+                setLoading(false);
+            // console.log(response.data);
+            setWeatheryah([response.data]);
                 
-    //     } catch (error) {
-    //         console.error(error);
-    //     }
-    // }
+        } catch (error) {
+            console.error(error);
+        }
+    }
     
-    // useEffect(()=>{
-    //     GetWeather()},[]);
+    useEffect(()=>{
+        GetWeather()},[]);
 
     return(
         <div>
